@@ -1,0 +1,56 @@
+$section-name: "sponsored";
+
+.#{$section-name} {
+  @extend .wrapper, .wrapper--spacer;
+
+  &.embed {
+    padding-left: 0;
+    padding-right: 0;
+
+    .sponsored__items {
+      @extend .row--grid-two;
+
+      --highlight-color: #{$grey};
+
+      @include screenSm {
+        .card:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+
+  &__title {
+    @extend .title--small, .title--spacer;
+
+    color: $grey;
+    text-transform: uppercase;
+  }
+
+  &__items {
+    @extend .row--grid-three;
+
+    --highlight-color: #{$grey};
+  }
+
+  &__items--column {
+    @extend .row--grid-column;
+  }
+
+  .card__content {
+    justify-content: flex-start;
+    padding: 2.5rem 2rem;
+  }
+
+  .card__title {
+    color: $blueDark !important;
+  }
+
+  .card__author {
+    font-weight: 300;
+  }
+}

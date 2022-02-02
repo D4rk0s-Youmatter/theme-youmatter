@@ -1,0 +1,88 @@
+body {
+  --highlight-color: #{$cyan};
+
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: $montserrat;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $white;
+
+  @include screenMd {
+    padding-top: 3.8rem;
+  }
+
+  &.orange {
+    --highlight-color: #{$orange};
+  }
+
+  &.purple {
+    --highlight-color: #{$violet};
+  }
+
+  &.author {
+    display: block;
+  }
+}
+
+a {
+  color: currentColor;
+}
+
+.wrapper {
+  max-width: 1170px;
+  margin: auto;
+  height: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+
+  @media screen and (max-width: 1280px) {
+    max-width: 100%;
+  }
+
+  &--spacer {
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+
+    @include screenXs {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+  }
+
+  &--spacer-bottom {
+    margin-bottom: 4rem;
+
+    @include screenXs {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &--bg {
+    background-color: #fff;
+    border-radius: $borderRadius;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+  }
+}
+
+/** Text meant only for screen readers */
+.screen-reader-text,
+.screen-reader-response {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  color: #000;
+  background: #fff;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}

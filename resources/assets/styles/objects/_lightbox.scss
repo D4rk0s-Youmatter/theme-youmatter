@@ -1,0 +1,135 @@
+$sectionName: "lightbox";
+$sectionBottomMargin: 1.875rem;
+$sectionHalfBottomMargin: 0.9375rem;
+
+.#{$sectionName} {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($lightbox, 0.4);
+  z-index: 100;
+  display: none;
+  align-items: center;
+
+  &__wrapper {
+    @extend .wrapper;
+
+    background-color: $white;
+    max-height: 90vh;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    padding: 5.625rem;
+    position: relative;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  &__content {
+    display: grid;
+    gap: $sectionBottomMargin;
+    margin: 0 auto;
+    max-width: 40rem;
+
+    p {
+      font: 700 1rem/1.4 $montserrat;
+      color: $blueDark;
+    }
+
+    footer {
+      p {
+        font-weight: 300;
+        padding-bottom: $sectionHalfBottomMargin;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__register {
+    form {
+      label {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        padding-bottom: 0.5rem;
+        color: $grey;
+      }
+    }
+
+    .form_row {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__buttons {
+    align-items: center;
+    display: grid;
+    gap: $sectionHalfBottomMargin;
+  }
+
+  &__button {
+    @extend .btn, .btn--blue_dark;
+  }
+
+  form {
+    @extend .#{$sectionName}__buttons;
+
+    input[type="search"],
+    input[type="text"],
+    input[type="password"] {
+      @extend .form__field;
+
+      text-align: center;
+    }
+
+    input[type="submit"] {
+      @extend .form__submit;
+    }
+
+    label {
+      @extend .screen-reader-text;
+    }
+  }
+
+  &--active {
+    display: flex;
+  }
+
+  &--login {
+    .#{$sectionName}__buttons {
+      justify-content: center;
+    }
+
+    .#{$sectionName}__button {
+      min-width: 20rem;
+    }
+  }
+
+  &--org-logo {
+    .#{$sectionName}__content {
+      justify-content: center;
+    }
+  }
+
+  &--alt {
+    .#{$sectionName}__buttons {
+      grid-auto-flow: column;
+      justify-content: center;
+    }
+  }
+}

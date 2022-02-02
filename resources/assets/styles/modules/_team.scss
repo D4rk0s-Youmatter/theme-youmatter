@@ -1,0 +1,36 @@
+$sectionName: 'team';
+
+.#{$sectionName} {
+  color: $blueDark;
+
+  &__title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    padding-bottom: 2rem;
+  }
+
+  &__description {
+    @extend %quote;
+  }
+
+  &__item {
+    align-content: start;
+    align-items: start;
+    display: grid;
+    font-weight: 300;
+    column-gap: 1.5rem;
+    grid-template-columns: 90px 1fr;
+    margin-top: 2rem;
+  }
+
+  &__avatar {
+    @extend %avatar;
+
+    grid-row: span 2;
+  }
+
+  &__name {
+    align-self: end;
+  }
+}

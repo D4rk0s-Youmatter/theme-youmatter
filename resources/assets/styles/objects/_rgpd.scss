@@ -1,0 +1,21 @@
+.cli-style-v2 .cli-bar-btn_container,
+.cli-modal-content {
+  .cli-plugin-button,
+  .cli-btn {
+    background-color: #00aca9;
+    align-items: center;
+    justify-content: center;
+    font: 600 1rem/1.2 Montserrat, sans-serif;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: all .25s ease-in;
+  }
+  .cli_action_button,
+  .cli_setting_save_button {
+    background-color: #00aca9!important;
+    &:hover {
+        background-color: #1c2f49!important;
+    } 
+  }
+}

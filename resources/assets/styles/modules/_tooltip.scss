@@ -1,0 +1,64 @@
+$section-name: "tooltip";
+$box-shadow: 3px 3px 12px 0 rgba(28, 47, 73, 0.15);
+
+.#{$section-name} {
+  display: inline-flex;
+  padding: 0.2rem;
+  position: relative;
+
+  @include screenSm {
+    display: none;
+  }
+
+  &__button {
+    @include highlightColor;
+
+    appearance: none;
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: $box-shadow;
+    display: flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+    height: 1.8rem;
+    justify-content: center;
+    line-height: 1;
+    position: relative;
+    transition: all $transitionDuration $transitionTiming;
+    width: 1.8rem;
+
+    &:hover,
+    &:focus {
+      background-color: $blueDark;
+      color: #fff;
+      outline: none;
+    }
+  }
+
+  &__content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    color: $black;
+    cursor: default;
+    font-size: 0.8rem;
+    opacity: 0;
+    padding: 15px;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all $transitionDuration $transitionTiming;
+    visibility: hidden;
+    width: 240px;
+    z-index: 100;
+
+    :hover + &,
+    :focus + & {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

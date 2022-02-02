@@ -1,0 +1,62 @@
+$sectionName: "discover";
+
+.#{$sectionName} {
+  position: relative;
+
+  &__items {
+    padding: 2rem 0;
+
+    @include screenXs {
+      padding-top: 0;
+    }
+  }
+
+  &__btn {
+    @extend .btn;
+
+    white-space: normal;
+  }
+
+  &__image {
+    margin-right: 1rem;
+    width: 30px;
+  }
+
+  &--large {
+    @extend .wrapper;
+
+    margin-top: 3rem;
+    padding-top: 6rem;
+    text-align: center;
+
+    &::before {
+      background-image: url(../images/shape-alt.jpg);
+      background-position: center 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 50%;
+      position: absolute;
+      width: 100vw;
+      top: 0;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+
+    .#{$sectionName}__items {
+      @extend .wrapper--spacer, .row--grid-three;
+    }
+  }
+
+  &--small {
+    .#{$sectionName}__items {
+      padding: 2rem 0 0;
+    }
+
+    .#{$sectionName}__btn {
+      @extend .btn--border, .btn--highlight-color;
+    }
+  }
+}

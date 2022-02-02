@@ -1,0 +1,46 @@
+$sectionName: "company__card";
+
+.#{$sectionName} {
+  background: $white;
+
+  &__box {
+    box-shadow: $shadow;
+    height: 100%;
+    border-radius: 6px;
+  }
+
+  &__logo {
+    width: 100%;
+    height: 0;
+    padding-bottom: 120%;
+    position: relative;
+    z-index: 2;
+
+    div {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__title {
+    font: 700 14px $montserrat;
+    text-align: center;
+    color: $blueDark;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+  }
+}

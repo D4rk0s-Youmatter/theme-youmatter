@@ -1,0 +1,475 @@
+$sectionName: header;
+$logoWidth: 190px;
+
+
+.#{$sectionName} {
+  background-color: $headerBackground;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include screenMenu {
+    left: 0;
+    max-height: 100%;
+    overflow: hidden;
+    max-width: 100vw;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    &:not(.open) {
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  &__blue-banner {
+    //height: 48px;
+    background-color: $blueBanner;
+    display: flex;
+    padding: 0 48px;
+    align-items: center;
+
+    .msg-blue-banner {
+        font-size: 13px;
+        color: #fff;
+        font-family: $poppins;
+    }
+    & a {
+        text-decoration: underline;
+    }
+    .messages {
+      .message {
+          opacity: 0;
+          height: 0;
+          transition: all .3s ease;
+          &.active {
+              opacity: 1;
+              height: auto;
+              transition: all .3s ease;
+          } 
+      }
+  }
+  @include screenMenu {
+    display: none;
+    .open & {
+      display: flex;
+      order: 3;
+      //padding: 0 48px;
+      flex-direction: column;
+      & .msg-blue-banner {
+        padding: 1rem 0 0 0;
+      }
+    }
+  }
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 0;
+    .header__bruce-banner,
+    .header__blue-banner {
+        display: none;
+        
+    }   
+  }
+
+  &__bruce-banner {
+    @include screenMenu {
+      display:flex;
+      background-color: $headerBackground;
+      padding: 0;
+    }
+  }
+
+  &__main-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 101px;
+
+    & .form-banner {
+        display: flex;
+        //justify-content: space-evenly;
+        //width: 100%;
+        //margin-right: auto;
+    }
+    & .languages {
+      margin-left: auto;
+    }
+    @include screenMenu {
+      height: 56px;
+      justify-content: space-evenly;
+      width: 100%;
+      & .form-banner {
+        position: absolute;
+        right: 10px;
+        display: flex;
+        flex-direction: row-reverse;
+        z-index: 10000;      
+        svg {
+        }
+        & > form {
+          display: none;
+          background-color: #fff;
+          border-radius: 4px;
+        }
+        &.active > form {
+            display: block;
+        }
+      }
+      & .languages {
+        display: none;
+      }
+    }
+  }
+
+  &__wrap {
+    @extend .wrapper;
+
+    column-gap: 2rem;
+    display: grid;
+    // grid-template-columns: 325px 1fr;
+    position: relative;
+
+    @include screenMenu {
+      grid-template-columns: initial;
+      padding: 0;
+    }
+  }
+
+  &__controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    @include screenMenu {
+      background-color: #fff;
+      grid-column: 1 / -1;
+      padding: 0.5rem 2rem;
+      pointer-events: all;
+      z-index: 50;
+    }
+  }
+
+  &__logo {
+    //flex-shrink: 0;
+    height: auto;
+    //display: block;
+    width: 273px;
+    //align-self: center;
+    //justify-self: center;
+    margin-left: 20%;
+
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    @include screenMenu {
+      width: 161px;
+      margin-left: 0;
+      position: absolute;
+      left: 54%;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  &__logo__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include screenMenu {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__donate-menu {
+    position: relative;
+
+    .btn {
+      border: 1px solid var(--highlight-color);
+      font-size: 0.875rem;
+      min-height: 0;
+      min-width: 0;
+      margin-left: 1rem;
+      padding: 0.5rem;
+      border-radius: 15px;
+
+      @include screenMenu {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+
+      &:hover {
+        background-color: var(--highlight-color);
+        color: $white;
+      }
+    }
+  }
+
+  &__burger {
+    @extend %button;
+
+    display: none;
+
+    @include screenMenu {
+      align-items: center;
+      background-color: transparent;
+      display: flex;
+      padding: 0 1rem;
+
+      &::after {
+        content: attr(data-label-closed);
+        display: block;
+        font-size: 0.8rem;
+        line-height: 1;
+        padding-right: 0.5rem;
+        margin-left: 0.5rem;
+        color: $black;
+        font: 500 13px $poppins;
+      }
+
+      &::before {
+        content: "\2630";
+        display: block;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        color: $burgerMenu;
+      }
+
+      .open & {
+        background-color: $white;
+        &::after {
+          content: attr(data-label-open);
+        }
+
+        &::before {
+          content: "\00D7";
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  &__aside {
+    //column-gap: 2rem;
+    display: flex;
+    //grid-auto-columns: min-content;
+    //grid-auto-flow: column;
+    //align-items: center;
+    //justify-self: end;
+    margin-left: auto;
+
+    @include biggerThanScreenMenu {
+      .fixed & {
+        display: none;
+      }
+    }
+
+    @include screenMenu {
+      grid-auto-flow: row;
+      opacity: 1;
+      order: 999;
+      justify-items: center;
+      justify-self: center;
+      padding: 1rem 2rem;
+      pointer-events: all;
+      row-gap: 1rem;
+      visibility: hidden;
+
+      .open & {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    svg {
+      display: block;
+      flex-shrink: 0;
+      height: 24px;
+      width: 24px;
+      fill: $white;
+    }
+  }
+
+  &__menu {
+    align-items: center;
+    display: flex;
+    grid-column: 1 / -1;
+
+    @include screenMenu {
+      background-color: $white;
+      display: block;
+      opacity: 0;
+      padding: 1rem 0 0 0;
+      pointer-events: all;
+      visibility: hidden;
+
+      .open & {
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+        flex-direction: column;
+        .banner-menu {
+          height: auto !important;
+        }
+      }
+    }
+  }
+
+  &__search {
+    display: block;
+    width: 14px;
+    height: 14px;
+
+    @include screenMenu {
+      order: -1;
+    }
+  }
+
+  &__picto {
+    @include highlightColor;
+
+    display: none;
+    margin-right: 1rem;
+
+    @include biggerThanScreenMenu {
+      .fixed & {
+        display: block;
+      }
+    }
+
+    svg {
+      width: 24px;
+    }
+  }
+
+  &__form {
+    display: grid;
+  
+  &__field {
+    border: none;
+    background-color: transparent;
+    width: 238px;
+    font-family: $poppins;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: $subCatBorder;
+      font-size: 14px;
+      font-family: $poppins;
+    }
+  }
+  &:focus {
+    outline: none;
+  }
+  
+}
+
+  .banner-menu {
+    border-top: 1px solid $headerGrey;
+    border-bottom: 1px solid $headerGreyDark;
+    padding: 0 2rem 0 1rem;
+    @include screenMenu {
+      border: none;
+      padding: 0;
+      height: 0;
+    }
+  }
+  &.open {
+    .banner-menu {
+      height: auto !important;
+    }
+  }
+  .open {
+    .banner-menu {
+      height: auto!important;
+    }
+    @include screenMenu {
+      & .header__blue-banner {
+        display: flex;
+        order: 3;
+        padding: 0;
+        flex-direction: column;
+        & .msg-blue-banner {
+          text-align: center;
+        }
+        & .header__aside {
+          padding: 0;
+          margin-left: inherit;
+        }
+      }
+      .banner-menu {
+        height: auto !important;
+      }
+    }
+  }
+}
+
+
+/* TODO @armand : mettre tout ça déquerre, il faut juste virer les grid et remplacer par des flex   */
+/* menu width fixes for 1440px  */
+
+header .header__wrap,
+header .wrapper {
+    max-width: 1440px;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    > ul {
+        display: inline-flex;
+        @include screenMenu {
+          flex-direction: column;
+          align-items: start;
+        }
+    & .menu--sectors,
+    & .menu--services {
+      //max-width: 270px;
+        @include screenMenu {
+          max-width: inherit;
+          padding-left: 47px;
+        }
+      }
+      .menu--secondary {
+        max-width: 270px;
+      }
+    }
+}
+.header__wrap {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.menu-header {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    > ul > li  > a {
+        white-space: nowrap;
+    }
+
+}
+
+#menu-main-menu {
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    max-width: none;
+    @include screenMenu {
+      flex-direction: column;
+      padding: 0 47px;
+    }
+}

@@ -1,0 +1,124 @@
+$sectionName: 'definition';
+
+.#{$sectionName} {
+  &__header {
+    padding: 2rem 3.375rem;
+    border-radius: 0.5rem;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 80%;
+  }
+
+  &__header__link {
+    color: $blueDark;
+    background-color: $white;
+    font: 700 1.875rem/47px $montserrat;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 6px;
+    width: 54px;
+    height: 47px;
+    border-radius: 4px;
+    text-align: center;
+
+    &--active {
+      color: $white;
+      background-color: $blueDark;
+    }
+  }
+
+  &__content {
+    background: $white;
+    padding-bottom: 11.5rem;
+
+    .wrapper {
+      position: relative;
+    }
+  }
+
+  &__go_top {
+    position: fixed;
+    right: 4rem;
+    bottom: 4rem;
+    width: 60px;
+    height: 60px;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+
+    &.absolute {
+      position: absolute;
+      bottom: -6rem;
+    }
+
+    &::before {
+      content: '';
+      border: solid $blueDark;
+      border-width: 0 2px 2px 0;
+      transform: rotate(-135deg);
+      width: 1rem;
+      height: 1rem;
+      display: block;
+    }
+
+    &:focus,
+    &:active {
+      background-color: $white;
+      border-color: $blueDark;
+
+      &::before {
+        border-color: $blueDark;
+      }
+    }
+
+    &:hover {
+      background-color: $blueDark;
+      border-color: $blueDark;
+
+      &::before {
+        border-color: $white;
+      }
+    }
+  }
+
+  &__row {
+    padding-top: 4rem;
+  }
+
+  &__letter {
+    color: $blueDark;
+    font: 700 3rem/1 $montserrat;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+  }
+
+  &__link {
+    @include highlightColorBorder;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    font: 700 1.25rem/1 $montserrat;
+    padding: 1rem 0;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 22px;
+      background: url(../images/arrow-right.png) no-repeat center / cover;
+    }
+
+    span {
+      display: block;
+      width: 60%;
+    }
+  }
+}

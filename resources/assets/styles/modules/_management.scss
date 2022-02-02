@@ -1,0 +1,48 @@
+$section-name: 'management';
+
+.#{$section-name} {
+  padding-bottom: 7.5rem;
+
+  &__title {
+    @include highlightColor;
+
+    font: 600 2.8rem/1.4 $montserrat;
+    margin: 5.675rem 0 3.75rem;
+    padding-right: calc(1 / 12 * 100%);
+  }
+
+  &__content {
+    font: 600 1rem/1.4 $montserrat;
+    color: $blueDark;
+    padding-right: calc(1 / 12 * 100%);
+  }
+
+  &__image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+$subsection-name: 'jobs__contact';
+
+.#{$subsection-name} {
+  padding-bottom: 7.5rem;
+  background: url(../images/contacts.png) no-repeat center top / auto;
+  text-align: center;
+
+  &__title {
+    font: 600 2.8rem/1.4 $montserrat;
+    color: $blueDark;
+    text-align: center;
+    margin-bottom: 3.75rem;
+
+    span {
+      display: block;
+      font-weight: 300;
+    }
+  }
+
+  &__button {
+    margin: auto;
+  }
+}

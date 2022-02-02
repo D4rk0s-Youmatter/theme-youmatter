@@ -1,0 +1,482 @@
+$sectionName: home;
+
+.#{$sectionName} {
+  .animatedElement {
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+      transition: opacity 0.6s 0.5s;
+    }
+  }
+
+  &--first {
+    padding: 5.5rem 0 3rem;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 100% auto;
+    position: relative;
+
+    @include screenXs {
+      background: none;
+    }
+
+    &__animation {
+      position: absolute;
+      top: -50px;
+      right: -100px;
+
+      @include screenMd {
+        display: none;
+      }
+
+      .circle {
+        opacity: 0;
+
+        &.active {
+          opacity: 1;
+          transition-property: opacity;
+          transition-duration: 0.7s;
+        }
+      }
+
+      @keyframes hand {
+        from {
+          transform: translate(50%, 50%);
+        }
+
+        to {
+          transform: translate(0, 0);
+        }
+      }
+
+      .hand {
+        animation-name: hand;
+        animation-duration: 0.5s;
+      }
+
+      @for $i from 1 through 12 {
+        .circle#{$i} {
+          &.active {
+            transition-delay: $i * 0.05s;
+          }
+        }
+      }
+
+      svg {
+        width: 600px;
+        max-width: 50vw;
+      }
+    }
+
+    h1 {
+      @extend .title, .title--highlight, .title--bold;
+
+      margin-bottom: 2rem;
+      max-width: 700px;
+      white-space: normal;
+
+      @include biggerThanScreenSm {
+        font-size: 4rem;
+      }
+    }
+
+    &_text {
+      color: $blueDark;
+      font: 600 1.25rem/1.4 $montserrat;
+      padding-bottom: 2rem;
+    }
+
+    &_figures {
+      padding-top: 2rem;
+      width: 80%;
+
+      h3 {
+        font: 600 1.6rem/2 $montserrat;
+        border-bottom: 1px solid $greyDark;
+      }
+    }
+
+    &_figures_values {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      list-style: none;
+
+      li {
+        width: 35%;
+        text-align: center;
+
+        &:last-child {
+          width: 30%;
+        }
+      }
+
+      div {
+        @include highlightColor;
+
+        font: 700 2rem/1 $montserrat;
+      }
+
+      i {
+        font-style: normal;
+      }
+
+      span {
+        font: 300 1rem $montserrat;
+      }
+    }
+  }
+
+  &--second {
+    padding: 5.6rem 0 7.5rem;
+    background-image: url(../images/bg-s2.png),
+      linear-gradient(to bottom, #0bb4ad 0%, #fff 50%);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100% 5.7rem, 100%;
+    background-position: center top, center 5.6rem;
+
+    @include screenXs {
+      background-image: linear-gradient(to bottom, #0bb4ad 0%, #fff 50%);
+      background-size: 200% auto;
+      background-position: center 0;
+    }
+
+    .row {
+      align-items: flex-end;
+    }
+
+    &__title {
+      @extend .title, .title--white;
+
+      margin-bottom: 2rem;
+      white-space: normal;
+
+      &::first-line {
+        font-size: 1.5em;
+      }
+    }
+
+    &__subtitle {
+      @extend .title;
+
+      margin-bottom: 1.5rem;
+      white-space: normal;
+    }
+
+    &__temporary {
+      margin: 3rem 0 5rem;
+    }
+
+    &_text {
+      color: $blueDark;
+      font: 600 1.125rem/1.4 $montserrat;
+      padding-bottom: 7.5rem;
+      padding-right: calc(1 / 12 * 100%);
+    }
+
+    &_secondary_text {
+      color: $blueDark;
+      font: 400 1.125rem/1.4 $montserrat;
+      padding-right: calc(1 / 12 * 100%);
+
+      @include screenXs {
+        padding-bottom: 2rem;
+        padding-right: 0;
+      }
+    }
+
+    .btn {
+      width: 80%;
+    }
+  }
+
+  &--third {
+    padding: 0 0 7.5rem;
+
+    &__subtitle {
+      @extend .title;
+
+      margin-bottom: 1.5rem;
+      white-space: normal;
+
+      @include screenXs {
+        margin-bottom: 0;
+      }
+    }
+
+    &_text {
+      color: $blueDark;
+      font: 300 1.125rem/1.4 $montserrat;
+      padding-bottom: 2rem;
+      padding-right: calc(1 / 12 * 100%);
+
+      @include screenXs {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  &--fourth {
+    padding: 0 0 5rem;
+    position: relative;
+
+    &__animation {
+      display: none !important;
+      position: absolute;
+      top: -200px;
+      right: 0;
+      width: 600px;
+      z-index: 0;
+      max-width: 50vw;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    &__subtitle {
+      @extend .title;
+
+      margin-bottom: 1.5rem;
+      white-space: normal;
+    }
+  }
+
+  &--fifth {
+    padding: 15rem 0 7.5rem;
+    background-image: url(../images/bg-s5.png),
+      linear-gradient(to bottom, #727dbb 0%, #fff 50%);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100% 15rem, 100%;
+    background-position: center top, center 15rem;
+
+    @include screenXs {
+      padding: 4rem 0;
+      background-size: 200% auto;
+      background-position: 0 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    &__subtitle {
+      @extend .title, .title--white;
+
+      margin-bottom: 1.5rem;
+      max-width: 500px;
+      white-space: normal;
+
+      &::first-line {
+        font-size: 1.5em;
+      }
+    }
+
+    &_text {
+      color: $blueDark;
+      font: 700 1.125rem/1.4 $montserrat;
+      margin-bottom: 2rem;
+      padding-right: calc(2 / 12 * 100%);
+    }
+
+    &_link {
+      padding-bottom: 7.5rem;
+    }
+
+    &__secondary_subtitle {
+      color: $blueDark;
+      font: 700 2.8rem/1 $montserrat;
+      margin-bottom: 1.5rem;
+
+      span {
+        display: block;
+        font-weight: 300;
+        padding-right: calc(2 / 12 * 100%);
+      }
+    }
+
+    &_secondary_text {
+      color: $blueDark;
+      font: 300 1.125rem/1.4 $montserrat;
+      margin-bottom: 3.75rem;
+    }
+
+    &_secondary_link {
+      padding-bottom: 7.5rem;
+    }
+
+    &__tertiary_subtitle {
+      @extend .title, .title--bold;
+
+      color: $violet;
+      margin-bottom: 1.5rem;
+      line-height: 0.6;
+    }
+
+    &_tertiary_link {
+      margin: 2.5rem auto 0;
+    }
+  }
+
+  &--sixth {
+    padding: 16.5rem 0 0;
+    background-color: $blueDark;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 100% auto;
+    position: relative;
+
+    @include biggerThanScreenMd {
+      padding: 23.5rem 0 0;
+    }
+
+    .wrapper {
+      border-bottom: 1px solid $white;
+      position: relative;
+      z-index: 2;
+    }
+
+    &__animate {
+      position: absolute;
+      z-index: 1;
+      top: -27.2vw;
+      right: 0;
+      width: 56vw;
+    }
+
+    &__subtitle {
+      @extend .title, .title--white;
+
+      margin-bottom: 1.5rem;
+      white-space: normal;
+    }
+
+    form p,
+    h3 {
+      text-align: center;
+    }
+
+    form {
+      margin: 0 calc(3 / 12 * 100%);
+
+      .checkbox {
+        display: inline-block;
+        color: $white;
+        position: relative;
+        margin-bottom: 2rem;
+        cursor: pointer;
+        user-select: none;
+
+        &::before {
+          content: "";
+          background-color: $white;
+          display: inline-block;
+          vertical-align: middle;
+          width: 22px;
+          height: 22px;
+          border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+
+        input[type="checkbox"]:checked ~ .checkmark {
+          position: absolute;
+          top: 7px;
+          left: 5px;
+          width: 12px;
+          height: 8px;
+          border-bottom: 3px solid $blueDark;
+          border-left: 3px solid $blueDark;
+          transform: rotate(-45deg);
+        }
+      }
+
+      input[type="email"] {
+        border: 1px solid transparent;
+        background: $white;
+        height: 3.375rem;
+        width: 100%;
+        text-align: center;
+        border-radius: 6px;
+        color: $blueDark;
+        margin-bottom: 1.875rem;
+      }
+
+      input[type="submit"] {
+        color: $blueDark;
+        margin-bottom: 1.875rem;
+
+        &:hover {
+          @include highlightBackground;
+
+          color: $white;
+        }
+      }
+
+      .mc4wp-response {
+        color: $white;
+        margin-bottom: 2rem;
+      }
+    }
+
+    &--light {
+      padding: 0 0 4rem 0;
+      background: none;
+
+      .svg {
+        display: block;
+        width: 139px;
+        height: 139px;
+        margin: 2rem auto;
+      }
+
+      &__subtitle {
+        color: $blueDark;
+      }
+
+      p {
+        color: $blueDark;
+        font: 700 1rem/1 $montserrat;
+        margin: 0 auto 1.5rem;
+        display: block;
+      }
+
+      form {
+        color: $blueDark;
+
+        input[type="email"] {
+          border-color: $blueDark;
+        }
+
+        input[type="submit"] {
+          border: 1px solid $blueDark;
+        }
+      }
+    }
+  }
+
+  &--light {
+    background-image: url(../images/shape-light.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    padding-top: 4rem;
+
+    .orange & {
+      background-image: url(../images/shape-light-orange.jpg);
+    }
+
+    &.violet {
+      background-image: url(../images/shape-light-violet.jpg);
+    }
+  }
+}

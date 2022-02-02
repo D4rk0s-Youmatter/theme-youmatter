@@ -1,0 +1,15 @@
+$sectionName: 'related';
+
+.#{$sectionName} {
+  @extend .wrapper, .wrapper--spacer;
+
+  &__title {
+    @extend .title--small, .title--spacer;
+
+    text-transform: uppercase;
+  }
+
+  &__items {
+    @extend .row--grid-three;
+  }
+}

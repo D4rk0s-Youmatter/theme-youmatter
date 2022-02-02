@@ -1,0 +1,15 @@
+@media screen and (min-width: 768px) {
+  $maxGridCols: 8;
+  $gap: 2em;
+  @for $i from 1 through $maxGridCols {
+    .flex_grid_x#{$i} {
+      gap: 2em;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      > * {
+        flex: 1 1 calc((100% / #{$i}) - #{$gap});
+        max-width: calc((100% / #{$i}) - #{$gap});
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+$sectionName: "author-details";
+
+.#{$sectionName} {
+  @include highlightColorBorder;
+
+  &__bio {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 2rem;
+    padding-bottom: 4rem;
+
+    @include screenXs {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__image {
+    @extend %avatar;
+  }
+
+  &__name {
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+  }
+
+  &__org {
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+    display: block;
+  }
+
+  &__networks {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 1rem;
+  }
+
+  &__social {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+
+    @include highlightColor;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__text {
+    font-weight: 300;
+    line-height: 1.2;
+    max-height: 2.5em;
+    overflow: hidden;
+    transition: max-height $transitionDuration $transitionTiming;
+    white-space: pre-line;
+
+    @include screenSm {
+      max-height: 3.5em;
+    }
+
+    &.open {
+      max-height: 999999px;
+    }
+  }
+}

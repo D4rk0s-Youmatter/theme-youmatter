@@ -1,0 +1,29 @@
+$sectionName: "share";
+
+.#{$sectionName} {
+  &__btn {
+    @extend .btn;
+
+    min-height: 65px;
+    padding: 0;
+  }
+
+  &__counter {
+    font-weight: 600;
+  }
+
+  &__icon {
+    margin-right: 1rem;
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    border: 2px solid var(--highlight-color);
+
+    svg {
+      margin: 9px 3px 0 0;
+      width: 19px;
+      height: 19px;
+      stroke: var(--highlight-color);
+    }
+  }
+}

@@ -1,0 +1,282 @@
+$section-name: "about";
+
+.#{$section-name} {
+  &__intro {
+    @extend .wrapper;
+
+    padding: 8.5rem 0;
+
+    @include screenMd {
+      padding: 4rem 0;
+    }
+
+    h1 {
+      padding-bottom: 1.5rem;
+      max-width: 60%;
+    }
+
+    h2 {
+      &::first-line {
+        font-weight: 400 !important;
+      }
+    }
+  }
+
+  &__values {
+    padding: 0 0 7rem;
+    background: linear-gradient(var(--highlight-color) 0%, $white 100%);
+    margin-top: 5.6rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      padding: 5.6rem 0;
+      background-image: url(../images/bg-about-2.png);
+      background-repeat: no-repeat, no-repeat;
+      background-size: 100% 5.7rem, 100%;
+      background-position: center top, center 5.6rem;
+      position: absolute;
+      top: -5.6rem;
+      left: 0;
+      width: 100%;
+    }
+
+    &__title {
+      padding: 3rem;
+    }
+
+    .row--grid-three {
+      @include screenMd {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include screenXs {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    article {
+      margin-bottom: 4rem;
+    }
+
+    &__btn {
+      border: 1px solid $white;
+      border-radius: 8px;
+      height: 72px;
+      line-height: 72px;
+      color: $blueDark;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      margin-bottom: 2rem;
+
+      img {
+        width: 42px;
+        height: 42px;
+        margin-right: 1.5rem;
+      }
+    }
+  }
+
+  &__purpose {
+    padding: 0 0 7rem;
+
+    &__title {
+      padding-bottom: 3rem;
+    }
+  }
+
+  &__ambition {
+    padding: 0 0 7rem;
+
+    &__title {
+      padding-bottom: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 2rem;
+      padding-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    &__text {
+      color: $blueDark;
+      padding: 0.5rem 0;
+    }
+
+    &__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+
+      em {
+        display: block;
+        height: 2rem;
+        width: 80%;
+        background-color: $greyLight;
+      }
+
+      i {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2rem;
+        background-color: var(--highlight-color);
+        z-index: 1;
+        transition: width 0.2s;
+      }
+    }
+  }
+
+  &__data {
+    padding: 0 0 7rem;
+
+    &__graph {
+      max-width: 100%;
+      overflow: auto;
+    }
+
+    &__graphs {
+      padding-top: 9rem;
+
+      &__item {
+        text-align: center;
+
+        h3 {
+          padding-bottom: 1rem;
+        }
+
+        div {
+          width: 80%;
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  &__team {
+    padding: 0 0 7rem;
+    background: linear-gradient(var(--highlight-color) 0%, $white 100%);
+    margin-top: 5.6rem;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      padding: 5.6rem 0;
+      background-image: url(../images/bg-about-2.png);
+      background-repeat: no-repeat, no-repeat;
+      background-size: 100% 5.7rem, 100%;
+      background-position: center top, center 5.6rem;
+      position: absolute;
+      top: -5.6rem;
+      left: 0;
+      width: 100%;
+    }
+
+    &__title {
+      padding: 3rem 0;
+    }
+
+    &__members {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
+      padding-bottom: 2rem;
+
+      @include screenSm {
+        grid-template-columns: 1fr;
+      }
+
+      &--extra {
+        display: none;
+        padding-top: 2rem;
+      }
+    }
+
+    &__member {
+      display: flex;
+
+      figure {
+        margin-right: 2rem;
+      }
+    }
+
+    img {
+      border-radius: 50%;
+      overflow: hidden;
+      display: block;
+      width: 96px;
+      height: 96px;
+    }
+  }
+
+  &__transparency {
+    padding: 0 0 7rem;
+
+    &__title {
+      padding-bottom: 3rem;
+    }
+
+    &__item {
+      border-bottom: 1px solid var(--highlight-color);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+
+      a {
+        margin-bottom: 2rem;
+        display: block;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform-origin: top;
+          transform: translateY(-50%);
+          width: 0;
+          height: 0;
+          border-top: 16px solid var(--highlight-color);
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+        }
+
+        &.open {
+          &::after {
+            transform: rotate(180deg) translateY(-50%);
+          }
+        }
+      }
+
+      div {
+        max-height: 0;
+        overflow: hidden;
+
+        &.open {
+          max-height: none;
+        }
+      }
+    }
+  }
+
+  &__contact {
+    padding: 0 0 7rem;
+
+    .row--center {
+      align-items: center;
+    }
+
+    &__title {
+      padding-bottom: 1rem;
+    }
+
+    &__subtitle {
+      padding-bottom: 3rem;
+    }
+  }
+}

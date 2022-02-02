@@ -1,0 +1,36 @@
+$sectionName: 'breadcrumbs';
+
+.#{$sectionName} {
+  @extend .wrapper;
+
+  font-size: 0.85rem;
+  font-weight: 300;
+  left: 50%;
+  position: absolute;
+  top: 1rem;
+  transform: translateX(-50%);
+
+  &__item {
+    display: inline-flex;
+    position: relative;
+
+    &::after {
+      content: '/';
+      display: block;
+      padding-left: 0.4rem;
+      padding-right: 0.3rem;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+}
+
+.breadcrumbs span span span a:before {
+    content: " / ";
+}
+
+span.breadcrumb_last {
+    display: none;
+}

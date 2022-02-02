@@ -1,0 +1,9 @@
+$sectionName: "newsroom-organization";
+
+.#{$sectionName} {
+  &__date {
+    color: $grey;
+    font: 500 15px $montserrat;
+    padding: 1rem 0;
+  }
+}

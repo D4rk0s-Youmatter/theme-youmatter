@@ -1,0 +1,28 @@
+$section-name: 'follow';
+
+.#{$section-name} {
+  @extend .wrapper, .wrapper--spacer;
+
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  @include screenXs {
+    margin-bottom: 3rem;
+  }
+
+  &__btn {
+    @extend .btn, .btn--more, .btn--blue_dark;
+
+    left: 50%;
+    max-width: 15rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__image {
+    max-width: 350px;
+    width: 90%;
+  }
+}

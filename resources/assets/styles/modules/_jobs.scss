@@ -1,0 +1,40 @@
+$section-name: 'jobs';
+
+.#{$section-name} {
+  padding-bottom: 7.5rem;
+
+  &__card {
+    background: $white;
+    padding: 3rem 1.875rem;
+    box-shadow: 3px 0 7px 7px rgba($blueDark, 0.15);
+
+    &__location {
+      font: 700 0.8rem/2 $montserrat;
+      color: $blueDark;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+
+      span {
+        @include highlightColor;
+
+        display: block;
+        font-size: 1rem;
+        font-weight: 300;
+        text-transform: none;
+      }
+    }
+
+    &__title {
+      font: 600 1rem/1.4 $montserrat;
+      color: $blueDark;
+      margin-bottom: 2rem;
+    }
+
+    &__link {
+      @include highlightColor;
+
+      font: 600 1rem/1.4 $montserrat;
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@-webkit-keyframes autofill {
+  to {
+    color: $blueDark;
+    background: transparent;
+  }
+}
+
+@keyframes likesCircle {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  40%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes likesLines {
+  0%,
+  25% {
+    opacity: 0;
+    transform: rotate(0);
+  }
+
+  45%,
+  80% {
+    opacity: 1;
+    transform: rotate(45deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes likesInside {
+  0%,
+  35% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  55%,
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

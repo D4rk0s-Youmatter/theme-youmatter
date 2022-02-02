@@ -1,0 +1,61 @@
+$sectionName: "title";
+
+.#{$sectionName} {
+  color: $blueDark;
+  font-size: 2.65rem;
+  font-weight: 300;
+  line-height: 1.1;
+  white-space: pre-line;
+
+  @include screenSm {
+    font-size: 2rem;
+  }
+
+  span {
+    font-weight: 300;
+  }
+
+  &::first-line {
+    font-weight: 700;
+  }
+
+  &--highlight {
+    @include highlightColor;
+  }
+
+  &--white {
+    color: #fff;
+  }
+
+  &--violet {
+    color: $violet;
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--light {
+    font-weight: 300;
+  }
+
+  &--spacer {
+    padding-bottom: 1rem;
+  }
+
+  &--medium {
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  &--small {
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  &--center {
+    text-align: center;
+  }
+}

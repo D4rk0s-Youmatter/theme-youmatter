@@ -1,0 +1,405 @@
+$sectionName: 'form';
+$placeholderColor: rgba($blueDark, 0.4);
+
+%formInfoAbsolute {
+  background-color: #fff;
+  font-size: 0.7rem;
+  position: absolute;
+  top: calc(100% + 0.2rem);
+}
+
+.#{$sectionName} {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 2rem;
+  position: relative;
+  width: 100%;
+
+  &__col {
+    align-items: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: minmax(130px, auto) 1fr;
+    gap: 2rem;
+    position: relative;
+  }
+
+  &__row {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: auto 1fr;
+    gap: 1rem;
+    position: relative;
+  }
+
+  &__label {
+    color: $blueDark;
+    display: block;
+    font-weight: 600;
+  }
+
+  &__field {
+    @include highlightColorBorder;
+    @include placeholder($placeholderColor);
+    @include autoFill;
+
+    appearance: none;
+    background-color: #fff;
+    border-radius: $borderRadius;
+    border-style: solid;
+    border-width: 1px;
+    color: inherit;
+    display: block;
+    height: 100%;
+    min-height: 3rem;
+    outline: 0;
+    padding: 1rem;
+    resize: none;
+    transition: border-color $transitionDuration $transitionTiming;
+    width: 100%;
+
+    &::-ms-clear {
+      display: none;
+    }
+
+    &:focus {
+      border-color: $blueDark;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      outline: 0;
+    }
+  }
+
+  &__select {
+    @extend .#{$sectionName}__field;
+
+    @include icon('arrow', $cyan);
+
+    background-repeat: no-repeat;
+    background-size: 1rem auto;
+    background-position: calc(100% - 1rem) center;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    padding-right: 3rem;
+    -webkit-padding-end: 3rem;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 $blueDark;
+    }
+
+    &:focus::-ms-value {
+      background-color: transparent;
+    }
+  }
+
+  &__control {
+    @extend %button;
+
+    position: relative;
+    width: 100%;
+
+    input[type='checkbox'],
+    input[type='radio'] {
+      opacity: 0;
+      position: absolute;
+
+      &:checked + label {
+        @include highlightBackground;
+
+        * {
+          filter: grayscale(1) brightness(100);
+        }
+
+        &::after {
+          color: #fff;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    label {
+      @extend .btn, .btn--border;
+
+      @include highlightColorBorder;
+
+      font-size: 0.8rem;
+      height: 100%;
+      justify-content: space-between;
+      position: relative;
+      text-transform: uppercase;
+      width: 100%;
+
+      &::after {
+        @include highlightColor;
+
+        align-items: center;
+        border: 1px solid;
+        border-radius: 50%;
+        content: '+';
+        display: inline-flex;
+        flex-shrink: 0;
+        font-size: 1.5rem;
+        font-weight: 300;
+        height: 1.5rem;
+        justify-content: center;
+        margin-left: 1rem;
+        transition: all $transitionDuration $transitionTiming;
+        width: 1.5rem;
+      }
+    }
+
+    &.loading {
+      position: relative;
+
+      &::after {
+        @include loader;
+
+        background-color: inherit;
+        content: '';
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    transition: all $transitionDuration $transitionTiming;
+    width: 2rem;
+  }
+
+  &__submit {
+    @extend .btn, .btn--blue_dark;
+  }
+
+  &__file {
+    position: relative;
+  }
+
+  &__info {
+    color: $greyLight;
+    font-weight: 300;
+    font-size: 0.8rem;
+    line-height: 1.2;
+
+    .#{$sectionName}__file & {
+      @extend %formInfoAbsolute;
+
+      left: 0;
+    }
+  }
+
+  &__search {
+    @extend %button;
+
+    @include icon('search', $cyan);
+
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto calc(100% - 1.5rem);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 4rem;
+  }
+
+  &__hidden {
+    display: none;
+  }
+
+  &__list {
+    &--dropdown {
+      background-color: #fff;
+      border-radius: $borderRadius;
+      box-shadow: $shadow;
+      left: 0;
+      opacity: 0;
+      padding: 0.5rem 0;
+      position: absolute;
+      top: 100%;
+      transition: all $transitionDuration $transitionTiming;
+      visibility: hidden;
+      width: 100%;
+      z-index: 10;
+
+      &.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &--multiple {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    align-items: center;
+    display: inline-flex;
+    cursor: default;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+    text-align: left;
+
+    &--choice {
+      color: $blueDark;
+      cursor: pointer;
+      display: block;
+      margin-right: 0;
+      padding: 0.1rem 1rem;
+      transition: color $transitionDuration $transitionTiming;
+
+      &:hover,
+      &focus {
+        @include highlightColor;
+      }
+    }
+
+    &.has-no-choices {
+      color: $greyLight;
+      pointer-events: none;
+    }
+  }
+
+  &__input {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    caret-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    pointer-events: none;
+    text-align: inherit;
+    width: 100% !important;
+
+    :not(:empty) + & {
+      display: none;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__remove {
+    @include icon('remove');
+
+    appearance: none;
+    background-color: transparent;
+    background-image: contain;
+    background-position: center;
+    border: none;
+    font-size: 0;
+    height: 1rem;
+    margin-left: 0.5rem;
+    width: 1rem;
+  }
+
+  /* Begin contact form 7 styles */
+
+  .ajax-loader {
+    position: absolute;
+  }
+
+  .wpcf7-not-valid-tip {
+    @extend %formInfoAbsolute;
+
+    color: $alertColor;
+    right: 0;
+  }
+
+  .wpcf7-validation-errors,
+  .wpcf7-acceptance-missing {
+    background-color: $alertColor;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  /* End contact form 7 styles */
+
+  &--alt {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+
+    &-single {
+      grid-template-columns: repeat(3, 1fr);
+
+      .form__row {
+        grid-column: 2 / 2;
+      }
+    }
+
+    .#{$sectionName}__field {
+      @include highlightBackground;
+      @include placeholder(#fff);
+
+      color: #fff;
+      font-weight: 700;
+      padding: 1rem 2rem;
+    }
+
+    .#{$sectionName}__select {
+      @include icon('arrow');
+
+      background-size: 1.5rem auto;
+      background-position: calc(100% - 2rem) center;
+      padding-right: 4rem;
+      -webkit-padding-end: 4rem;
+
+      &:-moz-focusring {
+        text-shadow: 0 0 0 #fff;
+      }
+    }
+
+    .#{$sectionName}__submit {
+      grid-column: 1 / -1;
+      justify-self: center;
+    }
+
+    .#{$sectionName}__input {
+      @include placeholder(#fff);
+    }
+  }
+
+  &--newsletter {
+    row-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+
+    .#{$sectionName}__row {
+      grid-column: span 3;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .#{$sectionName}__field--large {
+      grid-column: span 2;
+    }
+  }
+
+  &--comment {
+    padding-bottom: 2rem;
+
+    .#{$sectionName}__submit {
+      @extend .btn, .btn--fill;
+
+      display: block;
+      margin: 0 auto;
+    }
+
+    .acf-fields {
+      display: none;
+    }
+  }
+}

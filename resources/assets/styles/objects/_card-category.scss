@@ -1,0 +1,33 @@
+$section-name: "category-card";
+$gutter: 1rem;
+
+.#{$section-name} {
+  @include highlightColor;
+
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  padding: 0 1.625rem;
+  margin-bottom: $gutter;
+  border: 1px solid;
+  height: 4.68rem;
+  font: 700 0.81rem/1.2 $montserrat;
+  border-radius: 6px;
+  text-transform: uppercase;
+  transition: all 0.5s;
+
+  svg {
+    width: 34px;
+    height: 33px;
+    display: block;
+    margin-right: 1.625rem;
+  }
+
+  span {
+    color: $blueDark;
+  }
+
+  &:hover {
+    font-size: 1rem;
+  }
+}

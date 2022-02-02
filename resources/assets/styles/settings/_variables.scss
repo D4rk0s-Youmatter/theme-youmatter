@@ -1,0 +1,45 @@
+//Colors
+$white: #fff;
+$black: #231f20;
+$greyLight: #757575;
+$grey: #797ebc;
+$greyDark: #1b1431;
+$greyLight: #ccc;
+$orange: #de755c;
+$blueDark: #1c2f49;
+$cyan: #00aca9;
+$violet: #797ebd;
+$alertColor: #e74c3c;
+$lightbox: #4d5c70;
+$headerBackground: #f7f8fc;
+$blueBanner: #083a5d;
+$headerGrey: #d3d3d3;
+$headerGreyDark: #505050;
+$secteurViolet: #6268a9;
+$serviceOrange: #c75f48;
+$turquoise: #05a19f;
+$subCatBorder: #a7a7a7;
+$subCatText: #242424;
+$subCatAuthor: #7c7c7c;
+$burgerMenu : #0d9c9a;
+
+
+//fonts
+$montserrat: "Montserrat", sans-serif;
+$poppins: "Poppins", sans-serif;
+
+//transitions
+$transitionDuration: 0.25s;
+$transitionTiming: ease-in;
+
+//borders
+$borderRadius: 10px;
+
+$shadow: 0 0 1rem 0 rgba($blueDark, 0.2);
+
+/** Responsive */
+$screenLg: 1300px;
+$screenMenu: 1224px;
+$screenMd: 1024px;
+$screenSm: 840px;
+$screenXs: 600px;

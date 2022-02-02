@@ -1,0 +1,23 @@
+.et-box {
+  background-color: $greyLight;
+
+  &-content {
+    padding: 1rem;
+  }
+
+  ul {
+    color: $blueDark;
+    text-transform: uppercase;
+
+    li {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      li {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}

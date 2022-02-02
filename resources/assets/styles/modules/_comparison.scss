@@ -1,0 +1,54 @@
+$sectionName: "comparison";
+
+.#{$sectionName} {
+  @extend .wrapper, .wrapper--spacer;
+
+  display: flex;
+  justify-content: center;
+
+  @include screenXs {
+    flex-direction: column;
+  }
+
+  &__item {
+    align-content: start;
+    background-color: #fff;
+    border-radius: 4px;
+    display: grid;
+    flex: 1 1 0;
+    margin: 1rem;
+    max-width: 400px;
+    padding: 2rem;
+    row-gap: 1rem;
+
+    &:hover {
+      box-shadow: $shadow;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__text {
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    opacity: 0.5;
+
+    &::before {
+      content: "";
+      display: block;
+      flex-shrink: 0;
+      width: 2ch;
+    }
+
+    &.enabled {
+      opacity: 1;
+
+      &::before {
+        content: "\2713";
+      }
+    }
+  }
+}

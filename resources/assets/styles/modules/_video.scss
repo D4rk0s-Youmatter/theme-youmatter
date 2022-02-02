@@ -1,0 +1,60 @@
+$section-name: 'video';
+
+.#{$section-name} {
+  position: relative;
+  width: 100%;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 56%;
+  }
+
+  &__poster {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    transition: opacity $transitionDuration $transitionTiming;
+    width: 100%;
+
+    .playing & {
+      opacity: 0;
+    }
+  }
+
+  &__play {
+    @extend .btn, .btn--fill;
+
+    font-size: 1.3rem;
+    height: 50px;
+    left: 50%;
+    line-height: 0.8;
+    min-width: 100px;
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    .playing & {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__item {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity $transitionDuration $transitionTiming;
+    width: 100%;
+
+    .playing & {
+      opacity: 1;
+    }
+  }
+}

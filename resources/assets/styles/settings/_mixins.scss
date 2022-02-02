@@ -1,0 +1,163 @@
+@mixin highlightBackground {
+  background-color: $cyan;
+  background-color: var(--highlight-color);
+}
+
+@mixin highlightColor {
+  color: $cyan;
+  color: var(--highlight-color);
+}
+
+@mixin highlightColorBorder {
+  border-color: $cyan;
+  border-color: var(--highlight-color);
+}
+
+@mixin icon($name, $color: #fff) {
+  $icon-found: false;
+  $svgFill: '%23' + str_slice(inspect($color), 2);
+
+  $icons: (
+    'remove':
+    '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22#{ $svgFill }%22%20d%3D%22M256%208C119%208%208%20119%208%20256s111%20248%20248%20248%20248-111%20248-248S393%208%20256%208zm121.6%20313.1c4.7%204.7%204.7%2012.3%200%2017L338%20377.6c-4.7%204.7-12.3%204.7-17%200L256%20312l-65.1%2065.6c-4.7%204.7-12.3%204.7-17%200L134.4%20338c-4.7-4.7-4.7-12.3%200-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3%200-17l39.6-39.6c4.7-4.7%2012.3-4.7%2017%200l65%2065.7%2065.1-65.6c4.7-4.7%2012.3-4.7%2017%200l39.6%2039.6c4.7%204.7%204.7%2012.3%200%2017L312%20256l65.6%2065.1z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E',
+    'search':
+    '%3Csvg%20viewBox%3D%220%200%2064%2063%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M26.1%201a24.7%2024.7%200%201%201-.8%2049.4A24.7%2024.7%200%200%201%2026%201zm22.1%2046.4L63%2062%22%20fill%3D%22none%22%20stroke%3D%22#{ $svgFill }%22%20stroke-width%3D%222%22%2F%3E%3C%2Fsvg%3E',
+    'loading':
+    '%3Csvg%20viewBox%3D%220%200%2018%2018%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill%3D%22#{ $svgFill }%22%20d%3D%22M0%209h2a7%207%200%201%201%207%207v2a9%209%200%201%200-9-9z%22%3E%3CanimateTransform%20attributeType%3D%22xml%22%20attributeName%3D%22transform%22%20type%3D%22rotate%22%20from%3D%220%209%209%22%20to%3D%22360%209%209%22%20dur%3D%220.7s%22%20repeatCount%3D%22indefinite%22%2F%3E%3C%2Fpath%3E%3C%2Fsvg%3E',
+    'arrow':
+    '%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%3E%3Cpath%20fill%3D%22#{ $svgFill }%22%20d%3D%22M207%20381.5L12.7%20187a24%2024%200%200%201%200-34l22.7-22.6a24%2024%200%200%201%2033.9%200l154.7%20154%20154.7-154a24%2024%200%200%201%2034%200l22.6%2022.7a24%2024%200%200%201%200%2034L241%20381.4a24%2024%200%200%201-34%200z%22%2F%3E%3C%2Fsvg%3E',
+  );
+
+  @each $icon in $icons {
+    $alias: nth($icon, 1);
+    $value: nth($icon, 2);
+
+    @if $name == $alias {
+      $icon-found: $value;
+    }
+  }
+
+  @if $icon-found == false {
+    @warn "Oops! Icon ‘#{$name}’ does not exist.";
+  }
+
+  background-image: url('data:image/svg+xml, #{$icon-found}');
+  background-repeat: no-repeat;
+}
+
+@mixin loader {
+  @include icon('loading');
+
+  background-size: 100% 100%;
+  display: block;
+  height: 1rem;
+  width: 1rem;
+}
+
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  &:-moz-placeholder {
+    color: $color;
+  }
+}
+
+@mixin autoFill {
+  &:-webkit-autofill {
+    &,
+    &:active,
+    &:hover {
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+    }
+
+    &:focus {
+      -webkit-text-fill-color: $blueDark;
+    }
+  }
+}
+
+/*
+  Responsive
+*/
+@mixin screenLg {
+  @media screen and (max-width: $screenLg) {
+    @content;
+  }
+}
+
+@mixin screenMd {
+  @media screen and (max-width: $screenMd) {
+    @content;
+  }
+}
+
+@mixin screenMenu {
+  @media screen and (max-width: $screenMenu) {
+    @content;
+  }
+}
+
+@mixin screenSm {
+  @media screen and (max-width: $screenSm) {
+    @content;
+  }
+}
+
+@mixin screenXs {
+  @media screen and (max-width: $screenXs) {
+    @content;
+  }
+}
+
+@mixin wayBiggerThanScreenLg {
+  @media screen and (min-width: 1441px) {
+    @content;
+  }
+}
+@mixin biggerThanScreenLg {
+  @media screen and (max-width: $screenLg + 1) {
+    @content;
+  }
+}
+
+@mixin biggerThanScreenMd {
+  @media screen and (min-width: $screenMd + 1) {
+    @content;
+  }
+}
+
+@mixin biggerThanScreenMenu {
+  @media screen and (min-width: $screenMenu + 1) {
+    @content;
+  }
+}
+
+@mixin biggerThanScreenSm {
+  @media screen and (min-width: $screenSm + 1) {
+    @content;
+  }
+}
+
+@mixin biggerThanScreenXs {
+  @media screen and (min-width: $screenXs + 1) {
+    @content;
+  }
+}
+
+@mixin tabletMidScreen {
+  @media (min-width: $screenXs + 1) and (max-width : $screenMd) {
+    @content;
+  }
+}

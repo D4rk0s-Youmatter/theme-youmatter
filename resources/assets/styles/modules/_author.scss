@@ -1,0 +1,55 @@
+$sectionName: "author";
+
+.#{$sectionName} {
+  @include highlightColorBorder;
+
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2rem;
+  justify-content: start;
+  padding-bottom: 2rem;
+
+  &__image {
+    @extend %avatar;
+  }
+
+  &__name {
+    font-weight: 700;
+  }
+
+  &__label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+  }
+
+  &__text {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.2;
+    max-height: 2.5em;
+    overflow: hidden;
+    transition: max-height $transitionDuration $transitionTiming;
+    white-space: pre-line;
+
+    @include screenSm {
+      max-height: 3.5em;
+    }
+
+    &.open {
+      max-height: 999999px;
+    }
+  }
+
+  &__button {
+    color: $grey;
+    cursor: pointer;
+    font-weight: 700;
+
+    &.open {
+      display: none;
+    }
+  }
+}

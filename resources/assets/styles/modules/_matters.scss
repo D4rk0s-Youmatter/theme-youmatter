@@ -1,0 +1,165 @@
+$section-name: "matters";
+
+.#{$section-name} {
+  @extend .wrapper, .wrapper--spacer;
+
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1.5fr;
+
+  @include screenXs {
+    grid-template-columns: 1fr;
+  }
+
+  &--alt {
+    @include highlightColor;
+
+    @extend %shapeDark;
+
+    column-gap: 9rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include screenMd {
+      column-gap: 6rem;
+    }
+
+    @include screenXs {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &--faq {
+    @include highlightColor;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    @include screenXs {
+      grid-template-columns: 1fr;
+      padding-top: 2rem;
+    }
+  }
+
+  &--action {
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: 4rem;
+    position: relative;
+
+    @include screenXs {
+      grid-template-columns: 1fr;
+      padding-top: 0;
+    }
+
+    &::before {
+      background-image: url(../images/shape-light-alt.jpg);
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 50%;
+      position: absolute;
+      width: 100vw;
+      top: -9rem;
+      transform: translateX(-50%);
+      z-index: -1;
+
+      @media (orientation: portrait) {
+        background-size: auto 100%;
+        top: -5rem;
+      }
+    }
+
+    .card:first-of-type {
+      grid-column: span 2;
+      grid-row: span 2;
+
+      @include screenXs {
+        grid-column: inherit;
+        grid-row: inherit;
+      }
+
+      .card__figure {
+        flex-grow: 1;
+        padding: 0;
+      }
+    }
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  &__like {
+    flex-shrink: 0;
+    margin-right: 2rem;
+    width: 40%;
+  }
+
+  &__text {
+    color: $blueDark;
+    max-height: 12.5em;
+    overflow: hidden;
+    transition: max-height $transitionDuration $transitionTiming;
+
+    &.open {
+      max-height: 999999px;
+    }
+  }
+
+  &__button {
+    @extend .btn, .btn--border;
+
+    @include highlightColor;
+
+    grid-column: 1 / -1;
+    justify-self: center;
+
+    @include biggerThanScreenSm {
+      min-width: 300px;
+    }
+
+    &.open {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &__column {
+    @extend .row--grid-column;
+
+    margin-top: 5rem;
+    position: relative;
+
+    @include screenXs {
+      margin-top: 0;
+    }
+
+    &:nth-of-type(2n) {
+      &::before {
+        @include highlightBackground;
+
+        content: "";
+        display: block;
+        height: 100%;
+        left: -4.5rem;
+        position: absolute;
+        width: 1px;
+
+        @include screenMd {
+          left: -3rem;
+        }
+
+        @include screenXs {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .video {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 800px;
+  }
+}

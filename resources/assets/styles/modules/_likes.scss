@@ -1,0 +1,113 @@
+$sectionName: 'likes';
+
+.#{$sectionName} {
+  @include highlightColor;
+
+  align-items: center;
+  cursor: pointer;
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  font-weight: 300;
+  justify-items: center;
+  justify-self: center;
+  max-width: calc(100% - 4rem);
+  text-align: center;
+
+  &__title {
+    color: $blueDark;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__counter {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__label {
+    color: $blueDark;
+  }
+
+  svg {
+    transition: all $transitionDuration $transitionTiming;
+    width: 5rem;
+
+    @include screenSm {
+      width: 3rem;
+    }
+
+    * {
+      transform-origin: center;
+    }
+  }
+
+  &.loading {
+    svg {
+      .circle {
+        animation-name: likesCircle;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+      }
+
+      .inside {
+        animation-name: likesInside;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+      }
+
+      .lines {
+        animation-name: likesLines;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+
+  &--light {
+    grid-auto-flow: column;
+    text-align: left;
+
+    .#{$sectionName}__title {
+      display: none;
+    }
+
+    .#{$sectionName}__counter {
+      color: #fff;
+      font-size: 1.2rem;
+
+      @include screenSm {
+        @include highlightColor;
+      }
+    }
+
+    @include biggerThanScreenSm {
+      svg {
+        width: 10rem;
+      }
+    }
+  }
+
+  &--button {
+    grid-auto-flow: column;
+    column-gap: 1rem;
+
+    .#{$sectionName}__title,
+    .#{$sectionName}__label {
+      display: none;
+    }
+
+    .#{$sectionName}__counter {
+      font-size: 1rem;
+    }
+
+    svg {
+      width: 4rem;
+    }
+  }
+}

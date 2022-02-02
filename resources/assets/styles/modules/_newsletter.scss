@@ -1,0 +1,21 @@
+$sectionName: "newsletter";
+
+.#{$sectionName} {
+  @extend .wrapper;
+
+  text-align: center;
+
+  &__title {
+    @extend .title, .title--spacer;
+  }
+
+  &__subtitle {
+    @extend .title--small;
+
+    padding-bottom: 3rem;
+  }
+
+  &--large {
+    @extend %shapeDark, .wrapper--spacer;
+  }
+}

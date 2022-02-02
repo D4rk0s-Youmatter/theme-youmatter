@@ -1,0 +1,247 @@
+$sectionName: header;
+$logoWidth: 190px;
+
+.#{$sectionName} {
+  border-radius: 0 0 $borderRadius $borderRadius;
+  padding: 1.5rem 0 0;
+  box-shadow: $shadow;
+  background-color: $white;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+
+  @include screenMd {
+    left: 0;
+    max-height: 100%;
+    overflow: auto;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    &:not(.open) {
+      background-color: transparent;
+      box-shadow: none;
+      pointer-events: none;
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 0;
+  }
+
+  &__wrap {
+    @extend .wrapper;
+
+    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: 325px 1fr;
+    position: relative;
+
+    @include screenMd {
+      grid-template-columns: initial;
+      padding: 0;
+    }
+  }
+
+  &__controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    @include screenMd {
+      background-color: #fff;
+      border-radius: 0 0 $borderRadius $borderRadius;
+      box-shadow: $shadow;
+      grid-column: 1 / -1;
+      padding: 0.5rem 2rem;
+      pointer-events: all;
+      z-index: 50;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    height: auto;
+    display: block;
+    width: $logoWidth;
+
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    @include biggerThanScreenMd {
+      .fixed & {
+        display: none;
+      }
+    }
+  }
+
+  &__logo__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include screenXs {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__donate-menu {
+    position: relative;
+
+    .btn {
+      border: 1px solid var(--highlight-color);
+      font-size: 0.875rem;
+      min-height: 0;
+      min-width: 0;
+      margin-left: 1rem;
+      padding: 0.5rem;
+      border-radius: 15px;
+
+      @include screenXs {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+
+      &:hover {
+        background-color: var(--highlight-color);
+        color: $white;
+      }
+    }
+  }
+
+  &__burger {
+    @extend %button;
+
+    display: none;
+
+    @include screenMd {
+      align-items: center;
+      background-color: transparent;
+      color: $blueDark;
+      display: flex;
+      padding: 0;
+
+      &::before {
+        content: attr(data-label-closed);
+        display: block;
+        font-size: 0.8rem;
+        line-height: 1;
+        padding-right: 0.5rem;
+      }
+
+      &::after {
+        content: "\2630";
+        display: block;
+        font-size: 1.5rem;
+        line-height: 3rem;
+      }
+
+      .open & {
+        &::before {
+          content: attr(data-label-open);
+        }
+
+        &::after {
+          content: "\00D7";
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  &__aside {
+    column-gap: 2rem;
+    display: grid;
+    grid-auto-columns: min-content;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-self: end;
+
+    @include biggerThanScreenMd {
+      .fixed & {
+        display: none;
+      }
+    }
+
+    @include screenMd {
+      grid-auto-flow: row;
+      opacity: 1;
+      order: 999;
+      justify-items: center;
+      justify-self: center;
+      padding: 1rem 2rem;
+      pointer-events: all;
+      row-gap: 1rem;
+      visibility: hidden;
+
+      .open & {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    svg {
+      display: block;
+      flex-shrink: 0;
+      height: 14px;
+      width: 14px;
+      fill: $blueDark;
+    }
+  }
+
+  &__menu {
+    align-items: center;
+    display: flex;
+    grid-column: 1 / -1;
+    padding: 1rem 0 1.5rem;
+
+    @include screenMd {
+      background-color: $white;
+      display: block;
+      opacity: 0;
+      padding: 1rem 2rem;
+      pointer-events: all;
+      visibility: hidden;
+
+      .open & {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__search {
+    display: block;
+    width: 14px;
+    height: 14px;
+
+    @include screenMd {
+      order: -1;
+    }
+  }
+
+  &__picto {
+    @include highlightColor;
+
+    display: none;
+    margin-right: 1rem;
+
+    @include biggerThanScreenMd {
+      .fixed & {
+        display: block;
+      }
+    }
+
+    svg {
+      width: 24px;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+$sectionName: "lightbox";
+$sectionBottomMargin: 1.875rem;
+$sectionHalfBottomMargin: 0.9375rem;
+
+.#{$sectionName} {
+  .oneall_social_login {
+    max-width: 100%;
+  }
+
+  &--content {
+    .title {
+      padding-bottom: $sectionBottomMargin;
+    }
+
+    p {
+      font: 700 1rem/1.4 $montserrat;
+      color: $blueDark;
+      padding-bottom: $sectionBottomMargin;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: $sectionBottomMargin;
+
+      a {
+        min-width: calc(4 / 8 * 100%);
+        margin-bottom: $sectionHalfBottomMargin;
+      }
+
+      form {
+        width: 100%;
+
+        p {
+          margin-bottom: 0.5rem;
+          padding-bottom: 0;
+        }
+      }
+
+      label {
+        display: none;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        min-width: calc(8 / 12 * 100%);
+        height: 3.75rem;
+        background-color: transparent !important;
+        outline: none;
+        border: 1px solid $blueDark;
+        border-radius: 8px;
+        font: 0.875rem $montserrat;
+        color: $blueDark !important;
+        text-align: center;
+        padding: 0 1rem;
+      }
+
+      input[type="submit"] {
+        min-width: calc(4 / 12 * 100%);
+        height: 3.75rem;
+        background-color: $blueDark;
+        outline: none;
+        border: 1px solid $blueDark;
+        border-radius: 8px;
+        font: 700 1rem $montserrat;
+        color: $white !important;
+        text-align: center;
+        padding: 0 1rem;
+      }
+    }
+
+    footer {
+      p {
+        font-weight: 300;
+        padding-bottom: $sectionHalfBottomMargin;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &--login {
+    .buttons {
+      a {
+        min-width: calc(4 / 12 * 100%);
+        height: 3.75rem;
+        background-color: $blueDark;
+        outline: none;
+        border: 1px solid $blueDark;
+        border-radius: 8px;
+        font: 700 1rem/3.75rem $montserrat;
+        color: $white !important;
+        text-align: center;
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+$loginSectionName: "lightbox--login";

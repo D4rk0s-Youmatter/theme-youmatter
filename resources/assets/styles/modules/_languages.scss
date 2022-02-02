@@ -1,0 +1,56 @@
+$section-name: "languages";
+
+.#{$section-name} {
+  font-size: 0.7rem;
+  position: relative;
+  justify-self: end;
+  align-self: center;
+
+  @include screenMd {
+    order: -1;
+  }
+
+  &__toggle {
+    @extend %button, %arrow;
+
+    color: $turquoise;
+    text-transform: uppercase;
+    border: 2px solid $turquoise;
+    height: 48px;
+    width: 52px;
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 500;
+
+    &:after {
+      width: 8px;
+      height: 8px;
+      border-bottom: 1px solid $turquoise;
+      border-right: 1px solid $turquoise;
+    }
+  }
+
+  &__submenu {
+    @extend .submenu;
+
+
+      background-color: $headerBackground;
+      border-radius: 10px;
+      border: 2px solid $turquoise;
+      color: $turquoise;
+      font-weight: 500;
+
+      &,
+      &.active {
+        background-color: $headerBackground;
+        border-radius: 10px;
+        border: 2px solid $turquoise;
+        color: $turquoise;
+        font-weight: 500;
+        width: 52px;
+        position: absolute;
+        top: 45px;
+    }
+  }
+}
